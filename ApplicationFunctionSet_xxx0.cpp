@@ -142,30 +142,35 @@ static void ApplicationFunctionSet_ConquerorCarMotionControl(ConquerorCarMotionC
   }
 }
 
-void ApplicationFunctionSet_ConquerorCarTurn(uint8_t targetAngle) {
-
-  static float currentAngle;
-  ConquerorCarMotionControl L = Left;
-  ConquerorCarMotionControl R = Right;
-
-  while( currentAngle != targetAngle ) {
-
-    if (currentAngle >= targetAngle) {
-
-      ApplicationFunctionSet_ConquerorCarMotionControl(L, 100);
-
-    }
-
-    else if (currentAngle <= targetAngle) {
-
-      ApplicationFunctionSet_ConquerorCarMotionControl(R, 100);
-
-    }
-
-    else {
-
-      delay(100000);
-
-    }
-  }
-}
+//void Turn(uint8_t targetAngle) {
+//
+//  static float Yaw;
+//  ConquerorCarMotionControl L = Left;
+//  ConquerorCarMotionControl R = Right;
+//
+//  while( Yaw != targetAngle ) {
+//
+//    if (Yaw >= targetAngle) {
+//
+//      ApplicationFunctionSet_ConquerorCarMotionControl(L, 100);
+//
+//    }
+//
+//    else if (Yaw <= targetAngle) {
+//
+//      ApplicationFunctionSet_ConquerorCarMotionControl(R, 100);
+//
+//    }
+//
+//    else {
+//
+//      delay(100000);
+//
+//    }
+//
+//    AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw);
+//    
+//  }
+//  
+//}
+//

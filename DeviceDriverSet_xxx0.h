@@ -15,6 +15,9 @@ public:
                                      boolean direction_B, uint8_t speed_B, //B组电机参数
                                      boolean controlED                     //AB使能允许 true
   );                                                                       //电机控制
+
+  void turn(uint8_t targetAngle);
+  
 private:
 
 #define PIN_Motor_PWMA 5

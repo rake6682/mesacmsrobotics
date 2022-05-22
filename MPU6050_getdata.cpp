@@ -31,15 +31,15 @@ bool MPU6050_getdata::MPU6050_dveInit(void)
 {
   Wire.begin();
   uint8_t chip_id = 0x00;
-  uint8_t cout;
+  uint8_t count = 0;
   do
   {
     chip_id = accelgyro.getDeviceID();
     Serial.print("MPU6050_chip_id: ");
     Serial.println(chip_id);
     delay(10);
-    cout += 1;
-    if (cout > 10)
+    count += 1;
+    if (count > 10)
     {
       return true;
     }
@@ -57,7 +57,7 @@ bool MPU6050_getdata::MPU6050_dveInit(void)
 bool MPU6050_getdata::MPU6050_calibration(void)
 {
   unsigned short times = 100; //采样次数
-  for (int i = 0; i < times; i++)
+  for (unsigned int i = 0; i < times; i++)
   {
     gz = accelgyro.getRotationZ();
     gzo += gz;

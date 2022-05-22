@@ -1,5 +1,8 @@
 #include "DeviceDriverSet_xxx0.h"
-
+#include "ApplicationFunctionSet_xxx0.cpp"
+//DeviceDriverSet_Motor AppMotor;
+//Application_xxx Application_ConquerorCarxxx0;
+//MPU6050_getdata AppMPU6050getdata;
 /*Motor control*/
 void DeviceDriverSet_Motor::DeviceDriverSet_Motor_Init(void)
 {
@@ -71,5 +74,35 @@ void DeviceDriverSet_Motor::DeviceDriverSet_Motor_control(boolean direction_A, u
   {
     digitalWrite(PIN_Motor_STBY, LOW);
     return;
+  }
+}
+
+void DeviceDriverSet_Motor::turn(uint8_t targetAngle) { 
+    
+  static float Yaw;
+
+  while (Yaw != targetAngle) {
+
+    if (Yaw >= targetAngle) {
+
+      DeviceDriverSet_Motor_control(/*direction_A*/ direction_just, /*speed_A*/ 100,
+                                           /*direction_B*/ direction_back, /*speed_B*/ 100, /*controlED*/ control_enable); //Left
+
+      AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw); //update gyro
+      
+    }
+
+    else if (Yaw <= targetAngle) {
+
+      DeviceDriverSet_Motor_control(/*direction_A*/ direction_back, /*speed_A*/ 100,
+                                           /*direction_B*/ direction_just, /*speed_B*/ 100, /*controlED*/ control_enable); //Right
+
+      AppMotor.DeviceDriverSet_Motor_control(/*direction_A*/ direction_void, /*speed_A*/ 0,
+                                           /*direction_B*/ direction_void, /*speed_B*/ 0, /*controlED*/ control_enable);
+
+      AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw); //update gyro
+    
+    }
+    
   }
 }
