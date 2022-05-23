@@ -16,7 +16,7 @@ public:
                                      boolean controlED                     //AB使能允许 true
   );                                                                       //电机控制
 
-  void turn(uint8_t targetAngle);
+  int turn(int targetAngle);
   
 private:
 
