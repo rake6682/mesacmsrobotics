@@ -88,6 +88,9 @@ void DeviceDriverSet_Motor::turn(uint8_t targetAngle) {
       DeviceDriverSet_Motor_control(/*direction_A*/ direction_just, /*speed_A*/ 100,
                                            /*direction_B*/ direction_back, /*speed_B*/ 100, /*controlED*/ control_enable); //Left
 
+      AppMotor.DeviceDriverSet_Motor_control(/*direction_A*/ direction_void, /*speed_A*/ 0,
+                                           /*direction_B*/ direction_void, /*speed_B*/ 0, /*controlED*/ control_enable);
+
       AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw); //update gyro
       
     }

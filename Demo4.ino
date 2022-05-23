@@ -10,10 +10,11 @@ int time2 = 0;
 ConquerorCarMotionControl status = Forward;
 
 void setup() {
-  delay(20000);
+  delay(10000);
   Serial.begin(9600);
   AppMotor.DeviceDriverSet_Motor_Init();
   AppMPU6050getdata.MPU6050_dveInit();
+  delay(2000);
   AppMPU6050getdata.MPU6050_calibration();
   delay(2000);
 //  delay(10000);
@@ -22,7 +23,7 @@ void setup() {
 //  ApplicationFunctionSet_ConquerorCarMotionControl(stop_it, 250 );
   AppMotor.turn(90); //meant to be 90 degrees to the right(This line goes in an infinite loop after tuning about 500-540 degrees)
   delay(2000);
-  AppMotor.turn(-90); //meant to turn 90 degrees left(This line never executes)
+  AppMotor.turn(-90); //meant to turn 90 degrees left(This line never executes afaik)
   delay(2000);
 
 }
