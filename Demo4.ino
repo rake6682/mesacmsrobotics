@@ -21,10 +21,6 @@ void setup() {
 //  ApplicationFunctionSet_ConquerorCarMotionControl(status, 250 );  80 cm per second is the speed of the robot
 //  delay(1000);
 //  ApplicationFunctionSet_ConquerorCarMotionControl(stop_it, 250 );
-  AppMotor.turn(90); //meant to be 90 degrees to the right(This line goes in an infinite loop after tuning about 500-540 degrees)
-  delay(2000);
-  AppMotor.turn(-90); //meant to turn 90 degrees left(This line never executes afaik)
-  delay(2000);
 
 }
 
@@ -43,5 +39,32 @@ void loop() {
 //    }
 //    time1 = time2;
 //  }
+
+  AppMotor.turn(90); //Turns the robot 90 degrees clockwise, relative to its starting position.
+  delay(2000);
+  AppMotor.turn(-90); //Turns the robot 90 degrees counterclockwise, relative to its starting position.
+  delay(2000);
+  AppMotor.turn(0); //Turns robot to its starting position.
+  delay(2000);
+  AppMotor.turn(-120);
+  delay(2000);
+  AppMotor.turn(120);
+  delay(2000);
+  AppMotor.turn(150);
+  delay(2000);
+  AppMotor.turn(-150);
+  delay(2000);
+  AppMotor.turn(-180);
+  delay(2000);
+  AppMotor.turn(180);
+  delay(2000);
+  AppMotor.turn(-270);
+  delay(2000);
+  AppMotor.turn(270);
+  delay(2000);
+  AppMotor.turn(-360);
+  delay(2000);
+  AppMotor.turn(360);
+  delay(2000);
   
 }
