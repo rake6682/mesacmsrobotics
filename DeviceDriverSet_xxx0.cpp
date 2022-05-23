@@ -77,7 +77,7 @@ void DeviceDriverSet_Motor::DeviceDriverSet_Motor_control(boolean direction_A, u
   }
 }
 
-void DeviceDriverSet_Motor::turn(uint8_t targetAngle) { 
+void DeviceDriverSet_Motor::turn(int targetAngle) { 
     
   static float Yaw;
 
@@ -87,25 +87,22 @@ void DeviceDriverSet_Motor::turn(uint8_t targetAngle) {
 
       DeviceDriverSet_Motor_control(/*direction_A*/ direction_just, /*speed_A*/ 100,
                                            /*direction_B*/ direction_back, /*speed_B*/ 100, /*controlED*/ control_enable); //Left
-
-      AppMotor.DeviceDriverSet_Motor_control(/*direction_A*/ direction_void, /*speed_A*/ 0,
-                                           /*direction_B*/ direction_void, /*speed_B*/ 0, /*controlED*/ control_enable);
-
-      AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw); //update gyro
+      delay(10);
       
     }
 
     else if (Yaw <= targetAngle) {
 
       DeviceDriverSet_Motor_control(/*direction_A*/ direction_back, /*speed_A*/ 100,
-                                           /*direction_B*/ direction_just, /*speed_B*/ 100, /*controlED*/ control_enable); //Right
+                                           /*direction_B*/ direction_just, /*speed_B*/ 100, /*controlED*/ control_enable); //Right  
 
-      AppMotor.DeviceDriverSet_Motor_control(/*direction_A*/ direction_void, /*speed_A*/ 0,
-                                           /*direction_B*/ direction_void, /*speed_B*/ 0, /*controlED*/ control_enable);
-
-      AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw); //update gyro
-    
+      delay(10);
+      
     }
+
+    AppMotor.DeviceDriverSet_Motor_control(/*direction_A*/ direction_void, /*speed_A*/ 0,
+                                           /*direction_B*/ direction_void, /*speed_B*/ 0, /*controlED*/ control_enable); //Motor control
+    AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw);
     
   }
 }
